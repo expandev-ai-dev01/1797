@@ -1,4 +1,5 @@
 import { Outlet } from 'react-router-dom';
+import { Toaster } from '@/core/components/ui/toaster';
 
 export function AppLayout() {
   return (
@@ -8,6 +9,7 @@ export function AppLayout() {
         <Outlet />
       </main>
       {/* Footer can go here */}
+      <Toaster />
     </div>
   );
 }

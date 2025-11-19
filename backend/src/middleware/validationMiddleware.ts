@@ -4,11 +4,17 @@ import { z, ZodError } from 'zod';
 export const validateRequest = (schema: z.ZodObject<any, any>) => {
   return (req: Request, res: Response, next: NextFunction) => {
     try {
-      schema.parse({
+      const parsed = schema.parse({
         body: req.body,
         query: req.query,
         params: req.params,
       });
+
+      // Assign parsed (and coerced) values back to the request object
+      req.body = parsed.body;
+      req.query = parsed.query;
+      req.params = parsed.params;
+
       next();
     } catch (error) {
       if (error instanceof ZodError) {

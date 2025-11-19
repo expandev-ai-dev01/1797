@@ -1,7 +1,7 @@
 import { createBrowserRouter } from 'react-router-dom';
 
 import { AppLayout } from './layouts';
-import { HomePage, NotFoundPage } from '@/pages';
+import { HomePage, NotFoundPage, CarCatalogPage, CarDetailPage } from '@/pages';
 
 export const router = createBrowserRouter([
   {
@@ -13,9 +13,11 @@ export const router = createBrowserRouter([
         index: true,
         element: <HomePage />,
       },
-      // Feature routes will be added here
-      // e.g., { path: 'cars', element: <CarListPage /> }
-      // e.g., { path: 'cars/:id', element: <CarDetailPage /> }
+      {
+        path: 'cars',
+        element: <CarCatalogPage />,
+      },
+      { path: 'cars/:id', element: <CarDetailPage /> },
     ],
   },
   {
